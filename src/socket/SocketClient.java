@@ -17,7 +17,7 @@ public class SocketClient {
 
     private String hostname;
     private int port;
-    Socket socketClient;
+    static Socket socketClient;
 
     public SocketClient(String hostname, int port){
         this.hostname = hostname;
@@ -25,20 +25,11 @@ public class SocketClient {
     }
 
     public void connect() throws UnknownHostException, IOException{
-        System.out.println("Attempting to connect to "+hostname+":"+port);
+        System.out.println("Trying to to connect to "+hostname+":"+port);
         socketClient = new Socket(hostname,port);
         System.out.println("Connection Established");
     }
 
-    public void readResponse() throws IOException{
-        String userInput;
-        BufferedReader stdIn = new BufferedReader(new InputStreamReader(socketClient.getInputStream()));
-
-        System.out.println("Response from server:");
-        while ((userInput = stdIn.readLine()) != null) {
-            System.out.println(userInput);
-        }
-    }
 
     public static void main(String arg[]){
         //Creating a SocketClient object
@@ -46,9 +37,20 @@ public class SocketClient {
         try {
             //trying to establish connection to the server
             client.connect();
-            //if successful, read response from server
-            client.readResponse();
+            while (true) {
+            	
+            	
+            	
 
+					try {
+						Thread.sleep(2000);
+					} catch (InterruptedException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+            }
+            
+            
         } catch (UnknownHostException e) {
             System.err.println("Host unknown. Cannot establish connection");
         } catch (IOException e) {

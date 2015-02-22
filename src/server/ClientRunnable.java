@@ -15,8 +15,24 @@ public class ClientRunnable implements Runnable {
 	@Override
 	public void run() {
 		
-		sock.isClosed(); 
+		client.setOnline(true);
 		
+		while(!sock.isClosed()) {
+			sleep();
+		}
+		client.setOnline(false);
+		System.out.println("Connection to client has been lost");
+		
+		
+		
+	}
+	
+	private void sleep() {
+		try {
+			Thread.sleep(1250);
+		} catch (InterruptedException e) {
+			// Will be fine :)
+		}
 	}
 
 }
