@@ -15,7 +15,8 @@ import javax.swing.JSpinner;
 import javax.swing.JProgressBar;
 import javax.swing.JComboBox;
 
-import client.Agent;
+import agents.Agent;
+
 import java.awt.List;
 
 public class ClientGameScreen {

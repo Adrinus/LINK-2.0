@@ -1,11 +1,24 @@
 package client;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.PrintWriter;
 import java.net.Socket;
+import java.net.UnknownHostException;
+import java.util.ArrayList;
+import java.util.List;
+
+import agents.Agent;
 
 public class ClientFunctions {
 	
 	private Socket socket;
 	private String hostAdres;
+	private List<Agent> agenten = new ArrayList<Agent>();
+	private SocketFunctions sf = new SocketFunctions();
+    private BufferedReader in;
+    private PrintWriter out;
 	
 	
 	/**
@@ -17,27 +30,59 @@ public class ClientFunctions {
 	 * @return
 	 */
 	public boolean connect(String host, String userName) {
-		if (host.equals("") || userName.equals("")) {
+		
+		this.hostAdres = hostAdres;
+		//Here check if its possible to create a socket else it will fail and return false
+		try {
+			createSocket();
+		} catch (UnknownHostException e) {
+			//Server is not reachable
+			return false;
+		} catch (IOException e) {
+			//Illegal action
 			return false;
 		}
+		
+		
+        try {
+			in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+			out = new PrintWriter(socket.getOutputStream(), true);
+		} catch (IOException e) {
+			// IF fail, just return false;
+			return false;
+		}
+        
+		
+        String line;
+		try {
+			while (true) {
+				line = in.readLine();
+				
+				
+		        if (line.startsWith("SUBMITNAME")) {
+		        	
+		            out.println(userName);
+		        } else if (line.startsWith("NAMEACCEPTED")) {
+		        	System.out.println("hi");
+		        	break;
+		            
+		        }
+			}
+		} catch (IOException e) {
+			return false;
+		}		
 		return true;
 	}
 	
-	
-	/**
-	 * Give a client a socket which it will need to complete most of his tasks
-	 * @param socket
-	 */
-	public void setSocket(Socket socket) {
-		this.socket = socket;
+	private void createSocket() throws UnknownHostException, IOException {
+        Socket socket = new Socket(hostAdres, 9001);
+        this.socket = socket;
 	}
 	
-	
 	/**
-	 * Set Hostadres for later purposes
-	 * @param hostAdres
+	 * Ask the socket to give us a list of agents that are known to the server. This could be to hack them or worse..
 	 */
-	public void setHostAdres(String hostAdres) {
-		this.hostAdres = hostAdres;
+	private void getAgentList() {
+		
 	}
 }
