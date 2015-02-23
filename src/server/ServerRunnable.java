@@ -23,7 +23,7 @@ public class ServerRunnable implements Runnable {
 		
 		String name = "";
 		boolean login = true;
-		
+		System.out.println("hi");
 		try {
 
             // Create character streams for the socket.
@@ -32,25 +32,30 @@ public class ServerRunnable implements Runnable {
             out = new PrintWriter(socket.getOutputStream(), true);
 
             //Get a naam from our new AGENT but he cant already exist
-            while (login) {
+            if (login) {
                 
                 name = in.readLine();
-                if (name == null) {
+                
+                System.out.println(name);
+                if (name.equals("stefantry")) {
                 	System.out.println(name);
-                	out.println("SUBMITNAME");
+                	out.println("false");
                     return;
                 }
                 
                 for (Agent a : theServer.getAgentsList()) {
                 	if (a.getName().equals(name)) {
-                		login = false;
+                		out.println("false");
+                		return;
                 	}
                 }
+                
             }
 
             // Now that a successful name has been chosen, add the
             // socket's print writer to the set of all writers so
             // this client can receive broadcast messages.
+            System.out.println("lol");
             out.println("NAMEACCEPTED");
             System.out.println(name +  " Has Connected to the Server");
             theServer.addWriter(out);

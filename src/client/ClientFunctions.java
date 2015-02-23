@@ -52,22 +52,22 @@ public class ClientFunctions {
 			return false;
 		}
         
-		
+        
         String line;
 		try {
-			while (true) {
+			
+				out.println(userName);
 				line = in.readLine();
+				System.out.println("hi");
 				
 				
-		        if (line.startsWith("SUBMITNAME")) {
-		        	
-		            out.println(userName);
-		        } else if (line.startsWith("NAMEACCEPTED")) {
+
+		        if (line.startsWith("NAMEACCEPTED")) {
 		        	System.out.println("hi");
-		        	break;
-		            
+		        } else if (line.startsWith("false")) {
+		        	return false;
 		        }
-			}
+			
 		} catch (IOException e) {
 			return false;
 		}		
