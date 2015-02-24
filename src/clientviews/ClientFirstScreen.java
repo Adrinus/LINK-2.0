@@ -115,7 +115,8 @@ public class ClientFirstScreen {
 				String agentNameString = agentName.getText();
 				
 				if (clientFunctions.connect(hostNameString, agentNameString)) {
-					ClientGameScreen cgs = new ClientGameScreen();
+					System.out.println(clientFunctions);
+					ClientGameScreen cgs = new ClientGameScreen(clientFunctions);
 					
 					frame.setVisible(false);
 				} else {

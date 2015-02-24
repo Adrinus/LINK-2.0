@@ -15,19 +15,26 @@ import javax.swing.JSpinner;
 import javax.swing.JProgressBar;
 import javax.swing.JComboBox;
 
+import client.ClientFunctions;
 import agents.Agent;
 
 import java.awt.List;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class ClientGameScreen {
 	
 	private JFrame frame;
 	private JButton connectButton;
 	private List list;
+	private ClientFunctions clientFunctions;
 
 	
-	public ClientGameScreen() {
+	public ClientGameScreen(ClientFunctions cf) {
+		System.out.println(cf);
+		clientFunctions = cf;
 		initialize();
+		
 	}
 	
 	private void initialize() {
@@ -57,13 +64,23 @@ public class ClientGameScreen {
 		frame.setTitle("LINK 2.0 - TESTBUILD 0.0.1");
 		
 		list = new List();
-		frame.getContentPane().add(list, "cell 0 0");
+		frame.getContentPane().add(list, "cell 0 0,grow");
 		
-		list.add("Klaas");
+		connectButton = new JButton("Get Agents");
+		connectButton.addMouseListener(new MouseAdapter() {
+			public void mouseClicked(MouseEvent arg0) {
+				setAgentList();
+			}
+		});
+		frame.getContentPane().add(connectButton, "cell 0 1");
 		
-		connectButton = new JButton("CONNECT");
-		frame.getContentPane().add(connectButton, "cell 0 4");
-		
-		frame.setTitle("hi");
+	}
+	
+	
+	private void setAgentList() {
+		list.removeAll();
+		for (Agent a : clientFunctions.getAgentsList()) {
+			list.add(a.getName() + "  Online: "+a.getOnline());
+		}
 	}
 }

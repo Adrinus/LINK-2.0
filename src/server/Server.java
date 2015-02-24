@@ -36,8 +36,27 @@ public class Server {
     	return writers;
     }
     
+    public void addAgent (Agent a) {
+    	this.agents.add(a);
+    }
+    
     public void addWriter(PrintWriter writer) {
     	writers.add(writer);
+    }
+    
+    public Agent getAgent(String name) {
+    	for (Agent a : agents) {
+    		if (a.getName().equals(name)) {
+    			return a;
+    		}
+    	}
+    	return null;
+    }
+    
+    public void setAgentOnline(Agent a) {
+    	if (!a.equals(null)) {
+    		a.setOnline(false);
+    	}
     }
 
 

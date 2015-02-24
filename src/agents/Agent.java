@@ -4,8 +4,9 @@ public class Agent {
 	private String name;
 	private boolean online;
 	
-	public Agent(String name) {
+	public Agent(String name, boolean online) {
 		this.name = name;
+		this.online = online;
 	}
 	
 	public String getName() {

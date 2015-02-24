@@ -8,6 +8,7 @@ import java.net.Socket;
 import java.net.UnknownHostException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 import agents.Agent;
 
@@ -15,7 +16,7 @@ public class ClientFunctions {
 	
 	private Socket socket;
 	private String hostAdres;
-	private List<Agent> agenten = new ArrayList<Agent>();
+	private List<Agent> agents = new ArrayList<Agent>();
 	private SocketFunctions sf = new SocketFunctions();
     private BufferedReader in;
     private PrintWriter out;
@@ -43,27 +44,15 @@ public class ClientFunctions {
 			return false;
 		}
 		
-		
-        try {
-			in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-			out = new PrintWriter(socket.getOutputStream(), true);
-		} catch (IOException e) {
-			// IF fail, just return false;
-			return false;
-		}
-        
-        
+		createInOut();
         String line;
 		try {
 			
 				out.println(userName);
-				line = in.readLine();
-				System.out.println("hi");
-				
+				line = in.readLine();	
 				
 
 		        if (line.startsWith("NAMEACCEPTED")) {
-		        	System.out.println("hi");
 		        } else if (line.startsWith("false")) {
 		        	return false;
 		        }
@@ -79,10 +68,55 @@ public class ClientFunctions {
         this.socket = socket;
 	}
 	
+	public List<Agent> getAgentsList() {
+		try {
+			getAgentListFromSocket();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			System.out.println("Something went terribly wrong");
+		}
+		return this.agents;
+	}
+	
 	/**
 	 * Ask the socket to give us a list of agents that are known to the server. This could be to hack them or worse..
+	 * @throws IOException 
 	 */
-	private void getAgentList() {
+	private void getAgentListFromSocket() throws IOException {
+		out.println("REQUESTDATA GETAGENTLIST");
 		
+		agents.clear();
+		
+		String line = "";
+		
+		while (true) {
+			line = in.readLine();
+			if (line.equals("END")) {
+				break;
+			}
+			Scanner lineSc = new Scanner(line);
+			
+			String name = lineSc.next();
+			boolean online = Boolean.parseBoolean(lineSc.next());
+			
+			agents.add(new Agent(name,online));
+		}
+		
+	}
+	
+	private boolean createInOut() {
+        try {
+        	
+			in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+			out = new PrintWriter(socket.getOutputStream(), true);
+		} catch (IOException e) {
+			// IF fail, just return false;
+			return false;
+		}
+        return true;
+	}
+	
+	public String toString() {
+		return Integer.toString(socket.getPort());
 	}
 }
