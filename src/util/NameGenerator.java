@@ -7,10 +7,10 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class NameGenerator {
-	private File firstName = new File("resources/first.txt");
-	private File lastName = new File("resources/last.txt");
-	private File prefixName = new File("resources/prefix.txt");
-	private File suffixName = new File("resources/suffix.txt");
+	private File firstName = new File("resources/Names/first.txt");
+	private File lastName = new File("resources/Names/last.txt");
+	private File prefixName = new File("resources/Names/prefix.txt");
+	private File suffixName = new File("resources/Names/suffix.txt");
  
 	private String getRandomStringFromFile(File f) throws FileNotFoundException{
 		Scanner sc = new Scanner(f);
