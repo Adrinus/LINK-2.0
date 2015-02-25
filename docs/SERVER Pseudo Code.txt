@@ -1,0 +1,35 @@
+Server:
+Address address = 255.255.255.255;
+String name = "Mainframe";
+List<file> memoryBank = new ArrayList<file>();
+List<String> logs = new ArrayList<String>();
+int Monitor = 1;
+int Proxy = 0;
+int Firewall = 0;
+int MonitorBypassed = 0;
+int ProxyBypassed = 0;
+int FirewallBypassed = 0;
+int ActiveTraceMod = 1;
+int PassiveTraceMod = 1;
+Corporation corporation = Uplink;
+
+
+Extending Server:
+    - Gateway
+	has hardware and ownership tracked
+    - Public Access
+	has special access to internal systems
+	name = NameGenerator("company") + <insert Corp Type here> + " Public Access Server";
+    - Internal Services
+	must be accessed via a server in the same Corporation
+    - Bank
+	has extra information for security, accounts, and enchanced
+	name = NameGenerator("company") + " Bank"; tracing
+    - Telephone
+	has override to skip a password prompt and goes directly to call
+    - International Academic Database
+	has extra information for Academia and special interfaces
+    - Global Criminal Database
+	similar to the Academic database, but with extra security systems
+    - Mainframe
+	mainly for storing large amounts of data, usually like research or sales records.
