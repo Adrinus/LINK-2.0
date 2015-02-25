@@ -60,10 +60,28 @@ public class Server {
 	 * Main method which simply calls the server and runs it
 	 */
 	public static void main(String[] args) throws Exception {
+		
+		
+		
 		Server myServer = new Server();
-
 		myServer.start();
 
 	}
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
