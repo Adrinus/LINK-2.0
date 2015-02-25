@@ -7,14 +7,6 @@ public class Address {
 	int third = 255;
 	int fourth = 255;
 	
-	public static void main(String[] args) {
-		AddressManager am = new AddressManager();
-		Address address = am.string2Address("255.255.255.0");
-		Address address2 = am.string2Address("127.0.0.1");
-		System.out.println(am.address2String(address));
-		System.out.println(am.address2String(address2));
-	}
-	
 	/**
 	 * Creates an Address from 4 integers
 	 * @param f First Integer

@@ -1,15 +1,20 @@
 package gameplay;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
-public class AddressManager {
+import util.Rand;
 
+public class AddressManager {
+	
+	List<Address> Addresses = new ArrayList<Address>();
+	
 		public AddressManager(){
-			
 		}
 		
 		/**
-		 * Turns a String IP into an Address
+		 * Turns a String IP into an Address and adds it to the Addresses List
 		 * @param s   eg: "255.255.255.255"
 		 * @return Address  eg: (255,255,255,255)
 		 */
@@ -18,6 +23,7 @@ public class AddressManager {
 			Scanner parts = new Scanner(s).useDelimiter("\\p{Punct}");
 			Address address = new Address(parts.nextInt(),parts.nextInt(),parts.nextInt(),parts.nextInt());
 			parts.close();
+			Addresses.add(address);
 			return address;
 		}
 		
@@ -53,5 +59,15 @@ public class AddressManager {
 			
 			String s = getAddressPart(a,1) + "." + getAddressPart(a,2) + "." + getAddressPart(a,3) + "." + getAddressPart(a,4);
 			return s;
+		}
+		
+		/**
+		 * Returns a random Address and adds it to the Addresses List
+		 * @return Address  eg:(856,278,457,958)
+		 */
+		public Address randomAddress(){
+			Address a = new Address((Rand.Rand(2, 9)*100)+(Rand.Rand(5, 9)*10)+Rand.Rand(5, 9),(Rand.Rand(2, 9)*100)+(Rand.Rand(5, 9)*10)+Rand.Rand(5, 9),(Rand.Rand(2, 9)*100)+(Rand.Rand(5, 9)*10)+Rand.Rand(5, 9),(Rand.Rand(2, 9)*100)+(Rand.Rand(5, 9)*10)+Rand.Rand(5, 9));
+			Addresses.add(a);
+			return a;
 		}
 }
