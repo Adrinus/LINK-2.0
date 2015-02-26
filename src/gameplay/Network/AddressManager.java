@@ -2,8 +2,6 @@ package gameplay.Network;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
-
 import util.Rand;
 
 public class AddressManager {

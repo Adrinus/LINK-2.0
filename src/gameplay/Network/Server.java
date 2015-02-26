@@ -1,4 +1,9 @@
-package gameplay;
+package gameplay.Network;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import gameplay.Corporation;
 
 public class Server {
 
@@ -11,9 +16,11 @@ public class Server {
 	private boolean password = false;
 	private boolean cypher = false;
 	private boolean voice = false;
+	private List<Log> logs;
 	
 	public Server(Corporation corp){
 		this.setCorp(corp);
+		this.logs = new ArrayList<Log>();
 	}
 	
 	/**
@@ -143,12 +150,48 @@ public class Server {
 	public boolean isVoice(){
 		return this.voice;
 	}
-
+	
+	/**
+	 * Returns the Corporation of the Server
+	 * @return Corporation
+	 */
 	public Corporation getCorp() {
 		return this.corp;
 	}
-
+	
+	/**
+	 * Set the Server's Corporation
+	 * @param corp   Corporation
+	 */
 	public void setCorp(Corporation corp) {
 		this.corp = corp;
+	}
+	
+	/**
+	 * Returns the list of logs
+	 * @return List<Log>
+	 */
+	public List<Log> getLogs() {
+		return logs;
+	}
+	
+	/**
+	 * Adds a new log to the list of logs
+	 * @param logs
+	 */
+	public void addLog(Log log) {
+		this.logs.add(log);
+	}
+	
+	/**
+	 * Removes a matching Log in the list of logs
+	 * @param log
+	 */
+	public void removeLog(Log log){
+		for(Log l: logs){
+			if(log.equals(l)){
+				logs.remove(l);
+			}
+		}
 	}
 }

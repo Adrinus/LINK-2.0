@@ -1,7 +1,7 @@
-package gameplay;
+package gameplay.Network;
 
 import util.Rand;
-import gameplay.Network.AddressManager;
+import gameplay.Corporation;
 import data.Data;
 import data.MemoryBank;
 

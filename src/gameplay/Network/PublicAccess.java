@@ -1,6 +1,6 @@
-package gameplay;
+package gameplay.Network;
 
-import gameplay.Network.AddressManager;
+import gameplay.Corporation;
 
 public class PublicAccess extends Server{
 
