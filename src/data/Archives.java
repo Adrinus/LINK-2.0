@@ -3,8 +3,9 @@ package data;
 public class Archives extends Data{
 	private int encryption = 0;
 	
-	private Archives(int encryption){
+	public Archives(int encryption){
 		this.encryption = encryption;
+		this.setSize(this.getSize()*this.encryption);
 	}
 	
 	/**

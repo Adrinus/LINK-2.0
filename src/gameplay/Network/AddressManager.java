@@ -1,4 +1,4 @@
-package gameplay;
+package gameplay.Network;
 
 import java.util.ArrayList;
 import java.util.List;

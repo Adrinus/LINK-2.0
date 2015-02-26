@@ -1,4 +1,4 @@
-package gameplay;
+package gameplay.Network;
 
 public class Address {
 	
