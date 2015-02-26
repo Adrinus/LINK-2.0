@@ -66,7 +66,7 @@ public class AddressManager {
 		 * @return Address  eg:(856,278,457,958)
 		 */
 		public Address randomAddress(){
-			Address a = new Address((Rand.Rand(2, 9)*100)+(Rand.Rand(5, 9)*10)+Rand.Rand(5, 9),(Rand.Rand(2, 9)*100)+(Rand.Rand(5, 9)*10)+Rand.Rand(5, 9),(Rand.Rand(2, 9)*100)+(Rand.Rand(5, 9)*10)+Rand.Rand(5, 9),(Rand.Rand(2, 9)*100)+(Rand.Rand(5, 9)*10)+Rand.Rand(5, 9));
+			Address a = new Address(Rand.Rand(256, 999),Rand.Rand(256, 999),Rand.Rand(256, 999),Rand.Rand(256, 999));
 			Addresses.add(a);
 			return a;
 		}
