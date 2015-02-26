@@ -1,6 +1,7 @@
 package gameplay;
 
 import gameplay.Network.AddressManager;
+import gameplay.Network.InternalServices;
 import gameplay.Network.Mainframe;
 import gameplay.Network.PublicAccess;
 import gameplay.Network.Server;
@@ -85,6 +86,7 @@ public class Corporation {
 	 * @param am    Global AddressManager
 	 * @return Corporation 
 	 */
+	@SuppressWarnings("unused")
 	public static Corporation makeCorporation(String kind, AddressManager am){
 		
 		Corporation corp = new Corporation(kind);
@@ -93,8 +95,8 @@ public class Corporation {
 			Archives arch = new Archives(Rand.range(0,5),corp);
 			mainframe.addData(arch);
 		}
-		@SuppressWarnings("unused")
 		PublicAccess publicAccess = new PublicAccess(corp,am);
+		InternalServices internalServices = new InternalServices(corp,am);
 		return corp;
 	}
 
