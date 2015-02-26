@@ -55,10 +55,7 @@ public class MemoryBank {
 	public void setCapacity(int capacity){
 		
 		this.capacity = capacity;
-		int total = 0;
-		for(Data d:this.contents){
-			total = total + d.getSize();
-		}
+		int total = this.getUsed();
 		this.setFree(this.getCapacity() - total);
 	}
 	
@@ -80,5 +77,17 @@ public class MemoryBank {
 	public void setFree(int free){
 		
 		this.free = free;
+	}
+	
+	public List<Data> getContents(){
+		return this.contents;
+	}
+	
+	public int getUsed(){
+		int used = 0;
+		for(Data d:contents){
+			used = used + d.getSize();
+		}
+		return used;
 	}
 }

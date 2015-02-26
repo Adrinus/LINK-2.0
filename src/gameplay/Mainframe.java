@@ -2,6 +2,7 @@ package gameplay;
 
 import gameplay.Network.Address;
 import gameplay.Network.AddressManager;
+import data.Data;
 import data.MemoryBank;
 
 public class Mainframe {
@@ -19,7 +20,7 @@ public class Mainframe {
 		this.corp = corp;
 		this.name = corp.getName() + " Mainframe";
 		corp.addMainframe(this);
-		this.mb = new MemoryBank(20);
+		this.mb = new MemoryBank(255);
 		this.address = am.randomAddress();
 	}
 	
@@ -41,5 +42,13 @@ public class Mainframe {
 	
 	public void setName(String name){
 		this.name = name;
+	}
+	
+	public void addData(Data data){
+		this.mb.addData(data);
+	}
+	
+	public void removeData(Data data){
+		for(Data dat: mb.getContents());
 	}
 }
