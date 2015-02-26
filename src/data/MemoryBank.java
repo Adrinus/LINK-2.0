@@ -79,10 +79,18 @@ public class MemoryBank {
 		this.free = free;
 	}
 	
+	/**
+	 * Returns a list of all Data on the MemoryBank
+	 * @return List<Data>
+	 */
 	public List<Data> getContents(){
 		return this.contents;
 	}
 	
+	/**
+	 * Returns the amount of capacity currently in use.
+	 * @return int
+	 */
 	public int getUsed(){
 		int used = 0;
 		for(Data d:contents){

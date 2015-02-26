@@ -10,6 +10,19 @@ public class Log {
 	private String text = "";
 	private Data data;
 	
+	/**
+	 * Creates a new log with to, from, actions performed, and files accessed
+	 * @param action String 
+	 * @action "route" - used when routing from this server to another
+	 * @action "connect" - used when a connection to the server is made
+	 * @action "disconnect" - used when a connection to the server is closed
+	 * @action "admin" - used when user logs in as admin
+	 * @action "access" - used when user moves or copies a file
+	 * @action "delete" - used when a user removes a file
+	 * @param to
+	 * @param from
+	 * @param data
+	 */
 	public Log(String action, String to, String from, Data data){
 		this.action = action;
 		this.to = to;
@@ -61,7 +74,10 @@ public class Log {
 		return this.text;
 	}
 	
-	
+	/**
+	 * Sets the formatted text the log displays
+	 * @param text
+	 */
 	public void setText(String text) {
 		this.text = text;
 	}

@@ -8,6 +8,11 @@ import gameplay.Corporation;
 public class Archives extends Data{
 	private int encryption = 0;
 	
+	/**
+	 * Creates a new Archive with a set encryption level and a corporation associated with it
+	 * @param encryption
+	 * @param corp
+	 */
 	public Archives(int encryption, Corporation corp){
 		this.encryption = encryption;
 		this.setSize(Rand.range(1,3));

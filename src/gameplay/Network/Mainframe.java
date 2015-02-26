@@ -16,11 +16,11 @@ public class Mainframe extends Server{
 	public Mainframe(Corporation corp, AddressManager am){
 		super(corp);
 		this.setName(corp.getName() + " Mainframe");
-		corp.addServer(this);
 		this.mb = new MemoryBank(255);
 		this.setAddress(am.randomAddress());
 		this.setMonitor(Rand.range(1, 3));
 		this.setPassword(true);
+		corp.addServer(this);
 	}
 	
 	/**
