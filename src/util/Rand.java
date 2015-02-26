@@ -10,7 +10,7 @@ public class Rand {
 	 * @param max Maximum value.  Must be greater than min.
 	 * @return Integer between min and max, inclusive.
 	 */
-	public static int Rand(int min, int max) {
+	public static int range(int min, int max) {
 
 	    Random rand = new Random();
 	    int randomNum = rand.nextInt((max - min) + 1) + min;
