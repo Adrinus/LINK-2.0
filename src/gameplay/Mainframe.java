@@ -1,15 +1,12 @@
 package gameplay;
 
-import gameplay.Network.Address;
+import util.Rand;
 import gameplay.Network.AddressManager;
 import data.Data;
 import data.MemoryBank;
 
-public class Mainframe {
-	private String name = "";
+public class Mainframe extends Server{
 	private MemoryBank mb;
-	private Corporation corp;
-	private Address address;
 	
 	/**
 	 * Must be fed a Corporation and the global Address Manager
@@ -17,38 +14,40 @@ public class Mainframe {
 	 * @param am     AddressManager
 	 */
 	public Mainframe(Corporation corp, AddressManager am){
-		this.corp = corp;
-		this.name = corp.getName() + " Mainframe";
-		corp.addMainframe(this);
+		super(corp);
+		this.setName(corp.getName() + " Mainframe");
+		corp.addServer(this);
 		this.mb = new MemoryBank(255);
-		this.address = am.randomAddress();
+		this.setAddress(am.randomAddress());
+		this.setMonitor(Rand.range(1, 3));
+		this.setPassword(true);
 	}
 	
-	public Address getAddress(){
-		return this.address;
-	}
-	
-	public void setAddress(Address address){
-		this.address = address;
-	}
-	
+	/**
+	 * Returns the MemoryBank of the Mainframe
+	 * @return MemoryBank
+	 */
 	public MemoryBank getMemoryBank(){
 		return this.mb;
 	}
 	
-	public String getName(){
-		return this.name;
-	}
-	
-	public void setName(String name){
-		this.name = name;
-	}
-	
+	/**
+	 * Adds Data to the MemoryBank of the Mainframe
+	 * @param data
+	 */
 	public void addData(Data data){
 		this.mb.addData(data);
 	}
 	
+	/**
+	 * Removes matching Data from the Mainframe's MemoryBank
+	 * @param data
+	 */
 	public void removeData(Data data){
-		for(Data dat: mb.getContents());
+		for(Data dat : mb.getContents()){
+			if(data.equals(dat)){
+				mb.removeData(dat);
+			}
+		}
 	}
 }

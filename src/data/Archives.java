@@ -17,6 +17,7 @@ public class Archives extends Data{
 		compressedName = sc.next()+sc.next();
 		compressedName = compressedName.substring(0, Math.min(compressedName.length(), (compressedName.length()-(corp.getKind()).length()))+3);
 		this.setName(compressedName+"-"+Rand.range(20, 8000));
+		sc.close();
 	}
 	
 	/**

@@ -18,12 +18,13 @@ public class AddressManager {
 		 * @param s   eg: "255.255.255.255"
 		 * @return Address  eg: (255,255,255,255)
 		 */
+		@SuppressWarnings("resource")
 		public Address string2Address(String s){
 			
-			Scanner parts = new Scanner(s).useDelimiter("\\p{Punct}");
-			Address address = new Address(parts.nextInt(),parts.nextInt(),parts.nextInt(),parts.nextInt());
-			parts.close();
+			Scanner sc = new Scanner(s).useDelimiter("\\p{Punct}");
+			Address address = new Address(sc.nextInt(),sc.nextInt(),sc.nextInt(),sc.nextInt());
 			Addresses.add(address);
+			sc.close();
 			return address;
 		}
 		

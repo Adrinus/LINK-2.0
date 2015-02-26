@@ -1,21 +1,18 @@
 package gameplay;
 
 import gameplay.Network.AddressManager;
-
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
-
 import data.Archives;
-import data.Data;
-import data.MemoryBank;
 import util.NameGenerator;
 import util.Rand;
 
 public class Corporation {
 	private String name = "";
-	private List<Mainframe> mainframes;
+	private List<Server> servers;
 	private String kind = "";
+	
 	
 	/**
 	 * Makes a new Corporation with a Random Name
@@ -29,7 +26,7 @@ public class Corporation {
 			System.out.println("File not Found! Fuck!");
 		}
 		this.kind = kind;
-		this.mainframes = new ArrayList<Mainframe>();
+		this.servers = new ArrayList<Server>();
 	}
 	
 	/**
@@ -54,27 +51,27 @@ public class Corporation {
 	 * Returns the list of Mainframes
 	 * @return List<Mainframe>
 	 */
-	public List<Mainframe> getMainframes(){
+	public List<Server> getServers(){
 		
-		return this.mainframes;
+		return this.servers;
 	}
 	
 	/**
 	 * Adds a Mainframe to the list of Mainframes
 	 * @param mainframe
 	 */
-	public void addMainframe(Mainframe mainframe){
+	public void addServer(Server server){
 		
-		this.mainframes.add(mainframe);
+		this.servers.add(server);
 	}
 	
 	/**
 	 * Removes a matching mainframe from the list of mainframes
 	 * @param mainframe
 	 */
-	public void removeMainframe(Mainframe mainframe){
+	public void removeServer(Server server){
 		
-		this.mainframes.remove(mainframe);
+		this.servers.remove(server);
 	}
 	
 	/**
@@ -88,11 +85,11 @@ public class Corporation {
 		Corporation corp = new Corporation(kind);
 		Mainframe mainframe = new Mainframe(corp,am);
 		for(int i=0 ; i<5 ; i++){
-			
 			Archives arch = new Archives(Rand.range(0,5),corp);
-			MemoryBank mb = mainframe.getMemoryBank();
 			mainframe.addData(arch);
 		}
+		@SuppressWarnings("unused")
+		PublicAccess publicAccess = new PublicAccess(corp,am);
 		return corp;
 	}
 
