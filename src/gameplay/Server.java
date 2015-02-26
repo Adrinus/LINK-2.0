@@ -1,11 +1,9 @@
 package gameplay;
 
-import gameplay.Network.Address;
-
 public class Server {
 
 	private String name = "";
-	private Address address;
+	private String address;
 	private Corporation corp;
 	private int monitor = 0;
 	private int proxy = 0;
@@ -38,7 +36,7 @@ public class Server {
 	 * Returns the Address of the server
 	 * @return Address
 	 */
-	public Address getAddress(){
+	public String getAddress(){
 		return this.address;
 	}
 	
@@ -46,7 +44,7 @@ public class Server {
 	 * Sets the Address of the server
 	 * @param address
 	 */
-	public void setAddress(Address address){
+	public void setAddress(String address){
 		this.address = address;
 	}
 	
