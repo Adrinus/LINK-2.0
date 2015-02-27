@@ -44,6 +44,11 @@ public class AddressManager {
 			return this.Addresses;
 		}
 		
+		/**
+		 * Returns server associated with address
+		 * @param address
+		 * @return Server
+		 */
 		public Server getServerFromAddress(String address){
 			for(Corporation c: Corporation.getCorporations()){
 				for(Server s : c.getServers()){

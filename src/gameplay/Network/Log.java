@@ -11,17 +11,17 @@ public class Log {
 	private Data data;
 	
 	/**
-	 * Creates a new log with to, from, actions performed, and files accessed
-	 * @param action String 
-	 * @action "route" - used when routing from this server to another
-	 * @action "connect" - used when a connection to the server is made
-	 * @action "disconnect" - used when a connection to the server is closed
-	 * @action "admin" - used when user logs in as admin
-	 * @action "access" - used when user moves or copies a file
-	 * @action "delete" - used when a user removes a file
+	 * Creates a log with action, to and from IP addresses, and if accessing a file: the file
+	 * @param action
 	 * @param to
 	 * @param from
 	 * @param data
+	 * @see "route" - used when routing from this server to another
+	 * @see "connect" - used when a connection to the server is made
+	 * @see "disconnect" - used when a connection to the server is closed
+	 * @see "admin" - used when user logs in as admin
+	 * @see "access" - used when user moves or copies a file
+	 * @see "delete" - used when a user removes a file
 	 */
 	public Log(String action, String to, String from, Data data){
 		this.action = action;

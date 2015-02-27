@@ -4,7 +4,6 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 import java.util.Scanner;
 
 public class NameGenerator {
@@ -22,10 +21,7 @@ public class NameGenerator {
 			strings.add(sc.nextLine());
 		}
 		sc.close();
-		Random rand = new Random();
-		int index = rand.nextInt(strings.size());
-		
-		return strings.get(index);
+		return Rand.listString(strings);
 	}
 	
 	/**
@@ -63,7 +59,7 @@ public class NameGenerator {
 		while(left > 0){
 			String index = getRandomStringFromFile(firstName);
 			String index2 = getRandomStringFromFile(lastName);
-			name = index + index2;
+			name = index + " " + index2;
 			if(names.isEmpty()){
 				left = 0;
 			}

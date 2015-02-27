@@ -117,7 +117,7 @@ public class Corporation {
 		InternalServices internalServices = new InternalServices(corp,am);
 		PublicAccess publicAccess = new PublicAccess(corp,am);
 		Mainframe mainframe = new Mainframe(corp,am);
-		for(int i=0 ; i<5 ; i++){
+		for(int i=0 ; i<Rand.range(6, 20) ; i++){
 			Archives arch = new Archives(Rand.range(0,5),corp);
 			mainframe.addData(arch);
 		}
